@@ -1,11 +1,14 @@
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 // import 'package:multi_vendor_app/Pages/loginpage.dart';
 import 'package:multi_vendor_app/Pages/registerpage.dart';
+import 'package:multi_vendor_app/vendor/views/screens/main_vendor_screen.dart';
 import 'package:multi_vendor_app/views/buyers/auth/register_screen.dart';
 import 'package:multi_vendor_app/views/main_screen.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,18 +27,10 @@ class MyApp extends StatelessWidget {
       SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-        fontFamily: 'Brand-Bold,'
-      ),
+      
       // home: const MyHomePage(title: 'Winkle'),
   // home:  MainScreen(),
-     home:RegisterScreen(),
+     home:MainVendorScreen(),
     );
   }
 }

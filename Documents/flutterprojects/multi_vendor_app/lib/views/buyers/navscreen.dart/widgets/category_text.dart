@@ -38,7 +38,8 @@ Expanded(
 return Padding(
   padding: const EdgeInsets.all(8.0),
   child: ActionChip(
-    backgroundColor: Colors.yellow.shade900,
+    backgroundColor: Color.fromARGB(255, 64, 142, 198),
+
     onPressed: () {},
     label: Center(child: Text(_categorylable[index],style: TextStyle(
       color:Colors.white,

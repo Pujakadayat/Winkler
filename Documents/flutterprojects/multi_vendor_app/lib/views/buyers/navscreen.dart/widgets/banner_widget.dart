@@ -39,7 +39,7 @@ querySnapshot.docs.forEach((doc) {
         height:140,
         width: double.infinity,
         decoration: BoxDecoration(
-          color:Colors.yellow.shade900,
+          color: Color.fromARGB(255, 122, 32, 72),
         borderRadius: BorderRadius.circular(10)
         ),
         child: PageView.builder(

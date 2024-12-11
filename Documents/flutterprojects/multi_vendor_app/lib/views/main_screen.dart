@@ -38,7 +38,7 @@ AccountScreen(),
         }); //currentindex ma pageindex xa jun ma click garyo page ko value change hunxa tap garda
       },
     unselectedItemColor: Colors.black,
-    selectedItemColor: Colors.yellow.shade900,
+    selectedItemColor:const Color.fromARGB(255, 30, 39, 97),
     items: [
       BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.home),

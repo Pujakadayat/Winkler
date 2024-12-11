@@ -7,13 +7,13 @@ import 'package:multi_vendor_app/controllers/auth_controller.dart';
 import 'package:multi_vendor_app/utils/show_snackBar.dart';
 import 'package:multi_vendor_app/views/buyers/auth/login_screen.dart';
 
-class RegisterScreen extends StatefulWidget {
+class BuyerRegisterScreen extends StatefulWidget {
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<BuyerRegisterScreen> createState() => _BuyerRegisterScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
-  // const RegisterScreen({super.key});
+class _BuyerRegisterScreenState extends State<BuyerRegisterScreen> {
+  // const BuyerRegisterScreen({super.key});
 final AuthController _authController = AuthController();
 
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -94,11 +94,11 @@ setState(() {
                 _image!=null? 
                 CircleAvatar(
                   radius: 64,
-                  backgroundColor:Colors.yellow.shade900,
+                  backgroundColor:const Color.fromARGB(255, 13, 62, 86),
                   backgroundImage: MemoryImage(_image!),
                 ):CircleAvatar(
                   radius: 64,
-                  backgroundColor: Colors.yellow.shade900,
+                  backgroundColor: Colors.grey[500],
                   backgroundImage: NetworkImage('https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'),
                 ),
 Positioned(
@@ -194,7 +194,7 @@ Positioned(
                 width:MediaQuery.of(context).size.width - 40,
                 height: 50,
                 decoration: BoxDecoration(
-                  color:Colors.yellow.shade900,
+                  color:const Color.fromARGB(255, 13, 62, 86),
                   borderRadius:BorderRadius.circular(10),
                 ),
               child: Center(
