@@ -50,6 +50,8 @@ dependencies:
   font_awesome_flutter: ^10.8.0
   date_time_picker: ^2.0.0
   provider: ^6.1.2
+  uuid: ^4.5.1
+  photo_view: ^0.15.0
 
 dependency_overrides:
   intl: ^0.19.0

@@ -1,19 +1,19 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:multi_vendor_app/views/buyers/navscreen.dart/widgets/home_products.dart';
 
-class CategoryText extends StatelessWidget {
-  CategoryText({super.key});
-final List<String> _categorylable=[
-  'food',
-  'Vegetables',
-  'Electronics',
-  'Fashion',
-  'Home Applications',
-  'Home Decor',
-  'Kitchen Decor',
-  'Shoes'];
+class CategoryText extends StatefulWidget {
+  @override
+  State<CategoryText> createState() => _CategoryTextState();
+}
+
+class _CategoryTextState extends State<CategoryText> {
+String? _selectedCategory ;
+
   @override
   Widget build(BuildContext context) {
+    final Stream<QuerySnapshot> _categoryStream = FirebaseFirestore.instance.collection('categories').snapshots();
     return Padding(
       padding: const EdgeInsets.all(9.0),
      
@@ -27,21 +27,44 @@ final List<String> _categorylable=[
               ),
               ),
 
+              StreamBuilder<QuerySnapshot>(
+      stream: _categoryStream,
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return Text('Something went wrong');
+        }
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("Loading categories"),
+          );
+        }
+
+        return 
               Container(
                 height:40,
                 child: Row(children: [
 Expanded(
   child: ListView.builder(
     scrollDirection: Axis.horizontal,
-  itemCount: _categorylable.length,
+  itemCount: snapshot.data!.docs.length,
     itemBuilder: (context,index){
+      final categoryData = snapshot.data!.docs[index];
 return Padding(
   padding: const EdgeInsets.all(8.0),
   child: ActionChip(
     backgroundColor: Color.fromARGB(255, 64, 142, 198),
 
-    onPressed: () {},
-    label: Center(child: Text(_categorylable[index],style: TextStyle(
+    onPressed: () {
+      setState(() {
+        _selectedCategory = categoryData['categoryName'];
+      });
+      print(_selectedCategory);
+    },
+    label: Center(child: Text(
+   categoryData['categoryName'],
+      style: TextStyle(
       color:Colors.white,
       fontSize: 12,
       fontWeight: FontWeight.bold,
@@ -56,10 +79,20 @@ return Padding(
 IconButton(onPressed: () {},
  icon:Icon(Icons.arrow_forward_ios),
  ),
-                ],),
-              )
+                ],
+                ),
+              );
+      },
+    ),
+   
+if(_selectedCategory!=null)
+HomeproductWidget(categoryName: _selectedCategory!
+),
+
         ],
       ),
     );
   }
+  
+  HomeproductWidget({required String categoryName}) {}
 }

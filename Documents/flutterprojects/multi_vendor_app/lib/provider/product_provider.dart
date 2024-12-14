@@ -13,6 +13,11 @@ double? productPrice,
  String? category,
  String? description ,
  DateTime ? scheduleDate,
+ List <String>? imageUrlList,
+ bool? chargeShipping,
+ int? shippingCharge,
+ String? brandName,
+ List <String>? sizeList,
  }){
   // check if product name is not null
    // purpose: ensure that only non null values where added
@@ -34,6 +39,27 @@ double? productPrice,
    if(scheduleDate!=null){
         productData['scheduleDate'] = scheduleDate;
    }
+      if(imageUrlList!=null){
+        productData['imageUrlList'] = imageUrlList;
+   }
+    if(chargeShipping!=null){
+        productData['chargeShipping'] = chargeShipping;
+   }
+   if(shippingCharge!=null){
+        productData['shippingCharge'] =shippingCharge;
+   }
+   if(brandName!=null){
+        productData['brandName'] =brandName;
+   }
+   if(sizeList!=null){
+        productData['sizeList'] =sizeList;
+   }
+//listening to the changes that we made
+   notifyListeners();
 }
 
+clearData(){
+  productData.clear();
+  notifyListeners();
+}
 }
